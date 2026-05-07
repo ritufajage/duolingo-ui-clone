@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Duolingo UI Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- MAIN CARD -->
+<div class="card">
+
+  <img class="logo" src="logo.png">
+
+  <h1>🔥 <span id="streak">0</span> Day Streak</h1>
+  <p class="subtitle">You're on a roll! Keep it going 🔥</p>
+
+  <!-- Calendar -->
+  <div class="calendar">
+    <div class="day">M</div>
+    <div class="day">T</div>
+    <div class="day">W</div>
+    <div class="day">T</div>
+    <div class="day">F</div>
+    <div class="day">S</div>
+    <div class="day">S</div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-container">
+    <div class="progress"></div>
+  </div>
+
+  <button class="btn" onclick="completeLesson()">Start Lesson</button>
+
+</div>
+
+<!-- LEARNING PATH -->
+<div class="path-section">
+  <h2>Learning Path</h2>
+
+  <div class="path">
+    <div class="circle done">✔</div>
+    <div class="circle done">✔</div>
+    <div class="circle active">★</div>
+    <div class="circle">🔒</div>
+    <div class="circle">🔒</div>
+  </div>
+</div>
+
+<script>
+
+// Load saved data
+let streak = localStorage.getItem("streak") || 0;
+let currentDay = localStorage.getItem("currentDay") || 0;
+
+streak = parseInt(streak);
+currentDay = parseInt(currentDay);
+
+let days = document.querySelectorAll(".day");
+let progressBar = document.querySelector(".progress");
+
+// Initialize UI
+document.getElementById("streak").innerText = streak;
+
+// Activate previous days
+for(let i = 0; i <= currentDay; i++){
+  if(days[i]) days[i].classList.add("active");
+}
+
+// Set progress
+progressBar.style.width = ((currentDay + 1) / 7) * 100 + "%";
+
+// Button logic
+function completeLesson() {
+
+  streak++;
+  currentDay++;
+
+  // Weekly reset
+  if(currentDay >= 7){
+    currentDay = 0;
+    days.forEach(day => day.classList.remove("active"));
+  }
+
+  // Activate day
+  days[currentDay].classList.add("active");
+
+  // Update UI
+  document.getElementById("streak").innerText = streak;
+  progressBar.style.width = ((currentDay + 1) / 7) * 100 + "%";
+
+  // Save data
+  localStorage.setItem("streak", streak);
+  localStorage.setItem("currentDay", currentDay);
+}
+
+</script>
+
+</body>
+</html>

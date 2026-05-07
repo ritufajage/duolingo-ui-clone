@@ -1,0 +1,184 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #d9fdd3, #e8f5e9, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Glow effect */
+body::before {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: #58cc02;
+  border-radius: 50%;
+  filter: blur(120px);
+  top: 10%;
+  left: 20%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: #7ee000;
+  border-radius: 50%;
+  filter: blur(120px);
+  bottom: 10%;
+  right: 20%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* LOGO */
+.logo {
+  width: 70px;
+  margin-bottom: 5px;
+}
+
+/* TITLE */
+h1 {
+  color: #58cc02;
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* CALENDAR */
+.calendar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.day {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+/* ACTIVE DAYS */
+.active {
+  background: #58cc02;
+  color: white;
+  box-shadow: 0 4px 0 #3a8f02;
+}
+
+.day:hover {
+  transform: scale(1.1);
+}
+
+/* PROGRESS BAR */
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 20px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #58cc02, #7ee000);
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #58cc02;
+  color: white;
+  font-size: 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #3a8f02;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #4caf02;
+}
+
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+/* PATH SECTION */
+.path-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.path-section h2 {
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* PATH */
+.path {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* CIRCLES */
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+/* STATES */
+.done {
+  background: #58cc02;
+  color: white;
+  box-shadow: 0 4px 0 #3a8f02;
+}
+
+.circle.active {
+  background: orange;
+  color: white;
+}
+
+.circle:not(.done):not(.active) {
+  background: #ccc;
+}
